@@ -29,7 +29,9 @@ if (COMMANDS.ADD_NOTE === command) {
 
 } else if (COMMANDS.REMOVE_NOTE === command) {
     
-    notes.removeNote(argv.title);
+    var isNoteRemoved = notes.removeNote(argv.title);
+    
+    console.log(isNoteRemoved ? 'Note removed' : 'Note not found');
 
 } else if (COMMANDS.LIST_ALL_NOTES === command) {
     

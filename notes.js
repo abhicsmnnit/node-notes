@@ -17,7 +17,11 @@ var readNote = (title) => {
 };
 
 var removeNote = (title) => {
-    console.log('Removing note', title);
+    var notes = getAllNotes();
+    var remainingNotes = notes.filter((note) => note.title !== title);
+    saveNotes(remainingNotes);
+
+    return notes.length !== remainingNotes.length;
 };
 
 var listAllNotes = () => {
