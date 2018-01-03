@@ -1,16 +1,13 @@
-const _ = require('lodash');
-const yargs = require('yargs');
-
 const notes = require('./notes');
 const COMMANDS = require('./note-commands');
+const argvProcessor = require('./argv-processor');
 
-
-var argv = yargs.argv;
-var command = argv._[0];
+const argv = argvProcessor.argv;
+const command = argvProcessor.command;
 
 if (COMMANDS.ADD_NOTE === command) {
 
-    var note = notes.addNote(argv.title, argv.body);
+    const note = notes.addNote(argv.title, argv.body);
     if (note) {
         console.log('Note created');
         notes.printNote(note);
@@ -19,9 +16,9 @@ if (COMMANDS.ADD_NOTE === command) {
         console.log('Note title taken');
     }
 
-} else if (COMMANDS.READ_NOTE == command) {
+} else if (COMMANDS.READ_NOTE === command) {
     
-    var note = notes.readNote(argv.title);
+    const note = notes.readNote(argv.title);
     if (note) {
         console.log('Note details');
         notes.printNote(note);
@@ -32,13 +29,13 @@ if (COMMANDS.ADD_NOTE === command) {
 
 } else if (COMMANDS.REMOVE_NOTE === command) {
     
-    var isNoteRemoved = notes.removeNote(argv.title);
+    const isNoteRemoved = notes.removeNote(argv.title);
     
     console.log(isNoteRemoved ? 'Note removed' : 'Note not found');
 
 } else if (COMMANDS.LIST_ALL_NOTES === command) {
     
-    var allNotes = notes.listAllNotes();
+    const allNotes = notes.listAllNotes();
     console.log(`You have ${allNotes.length} note(s).`);
     allNotes.forEach(note => notes.printNote(note));
 
