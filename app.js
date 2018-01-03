@@ -12,7 +12,16 @@ console.log(`Command: ${command}`);
 
 if (COMMANDS.ADD_NOTE === command) {
 
-    notes.addNote(argv.title, argv.body);
+    var note = notes.addNote(argv.title, argv.body);
+    if (note) {
+        console.log('Note created');
+        console.log('--');
+        console.log(`Title: ${note.title}`);
+        console.log(`Body: ${note.body}`);
+    }
+    else {
+        console.log('Note title taken');
+    }
 
 } else if (COMMANDS.READ_NOTE == command) {
     
