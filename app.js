@@ -8,8 +8,6 @@ const COMMANDS = require('./note-commands');
 var argv = yargs.argv;
 var command = argv._[0];
 
-console.log(`Command: ${command}`);
-
 if (COMMANDS.ADD_NOTE === command) {
 
     var note = notes.addNote(argv.title, argv.body);
@@ -40,10 +38,12 @@ if (COMMANDS.ADD_NOTE === command) {
 
 } else if (COMMANDS.LIST_ALL_NOTES === command) {
     
-    notes.listAllNotes();
+    var allNotes = notes.listAllNotes();
+    console.log(`You have ${allNotes.length} note(s).`);
+    allNotes.forEach(note => notes.printNote(note));
 
 } else {
     
-    console.log('Command not recognized');
+    console.log(`${command}: Command not recognized`);
 
 }

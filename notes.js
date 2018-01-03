@@ -27,7 +27,7 @@ var removeNote = (title) => {
 };
 
 var listAllNotes = () => {
-    console.log('Fetching all notes');
+    return getAllNotes();
 };
 
 function saveNotes(notes) {
