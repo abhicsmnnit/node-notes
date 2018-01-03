@@ -4,3 +4,6 @@ node_modules/
 # For suppressing ES 6 Syntax Warnings
 .jshintrc
 jsconfig.json
+
+# Notes Data
+notes-data.json
