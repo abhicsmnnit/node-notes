@@ -13,7 +13,9 @@ var addNote = (title, body) => {
 };
 
 var readNote = (title) => {
-    console.log('Reading note', title);
+    var notes = getAllNotes();
+    var filteredNotes = notes.filter((note) => note.title === title);
+    return filteredNotes[0];
 };
 
 var removeNote = (title) => {
@@ -41,9 +43,16 @@ function getAllNotes() {
     }
 }
 
+function printNote(note) {
+    console.log('--');
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+}
+
 module.exports = {
     addNote,
     readNote,
     removeNote,
-    listAllNotes
+    listAllNotes,
+    printNote
 };

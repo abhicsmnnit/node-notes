@@ -15,9 +15,7 @@ if (COMMANDS.ADD_NOTE === command) {
     var note = notes.addNote(argv.title, argv.body);
     if (note) {
         console.log('Note created');
-        console.log('--');
-        console.log(`Title: ${note.title}`);
-        console.log(`Body: ${note.body}`);
+        notes.printNote(note);
     }
     else {
         console.log('Note title taken');
@@ -25,7 +23,14 @@ if (COMMANDS.ADD_NOTE === command) {
 
 } else if (COMMANDS.READ_NOTE == command) {
     
-    notes.readNote(argv.title);
+    var note = notes.readNote(argv.title);
+    if (note) {
+        console.log('Note details');
+        notes.printNote(note);
+    }
+    else {
+        console.log('Note not found');
+    }
 
 } else if (COMMANDS.REMOVE_NOTE === command) {
     
